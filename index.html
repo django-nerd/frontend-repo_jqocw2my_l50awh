@@ -3,16 +3,161 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flames App</title>
-    <link rel="icon" type="image/x-icon" href="favicon.svg">
+    <title>CHJK Studios</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-mono/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Spline Web Component -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.57/build/spline-viewer.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="site-bg">
+      <div class="grain"></div>
+      <header class="nav">
+        <div class="container nav-inner">
+          <a href="#home" class="brand">
+            <span class="brand-dot"></span>
+            CHJK Studios
+          </a>
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+          <nav class="nav-links" data-menu>
+            <a href="#home">Home</a>
+            <a href="#work">Work</a>
+            <a href="#servers">Servers</a>
+            <a href="#contact" class="cta">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero -->
+        <section id="home" class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <h1>
+                Experimental digital experiences
+                <span class="accent">by CHJK Studios</span>
+              </h1>
+              <p>
+                We craft immersive web, infrastructure, and realtime systems. Dive into our universe—best experienced in the dark.
+              </p>
+              <div class="hero-actions">
+                <a href="#work" class="btn primary">See our work</a>
+                <a href="#contact" class="btn ghost">Start a project</a>
+              </div>
+            </div>
+            <div class="hero-scene">
+              <spline-viewer
+                loading="lazy"
+                width="100%"
+                height="100%"
+                url="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode">
+              </spline-viewer>
+              <div class="scene-glow"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Showcase -->
+        <section id="work" class="section">
+          <div class="container">
+            <div class="section-header">
+              <h2>What we build</h2>
+              <p>From interactive frontends to robust APIs and game infrastructure.</p>
+            </div>
+            <div class="cards">
+              <article class="card">
+                <h3>Web Experiences</h3>
+                <p>High-end, animated interfaces with 3D, motion, and accessibility in mind.</p>
+              </article>
+              <article class="card">
+                <h3>Backend & APIs</h3>
+                <p>Fast, reliable services, designed for scale and observability.</p>
+              </article>
+              <article class="card">
+                <h3>Minecraft Servers</h3>
+                <p>Low-latency networks, mod management, and automated deployments.</p>
+              </article>
+              <article class="card">
+                <h3>Deployment</h3>
+                <p>CI/CD pipelines with security-first practices and global delivery.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Servers -->
+        <section id="servers" class="section alt">
+          <div class="container servers">
+            <div class="servers-copy">
+              <h2>Minecraft infrastructure</h2>
+              <ul class="list">
+                <li>Autoscaling nodes and blue/green updates</li>
+                <li>Global PoPs with edge caching</li>
+                <li>DDoS protection and observability</li>
+                <li>Backups, rollbacks, and one-click restores</li>
+              </ul>
+            </div>
+            <div class="servers-media">
+              <div class="mock"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+          <div class="container contact">
+            <div>
+              <h2>Let’s build something</h2>
+              <p>Tell us a bit about your project. We’ll get back within 1–2 business days.</p>
+            </div>
+            <form class="form" id="contact-form">
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@company.com" required />
+              </label>
+              <label>
+                <span>Project type</span>
+                <select name="type" required>
+                  <option value="">Select one</option>
+                  <option>Web Experience</option>
+                  <option>Backend/API</option>
+                  <option>Minecraft Infrastructure</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label class="full">
+                <span>Description</span>
+                <textarea name="description" rows="5" placeholder="Goals, timeline, links…" required></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn primary">Send message</button>
+                <p class="form-note">No database. This uses your email client.</p>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <span>© <span id="year"></span> CHJK Studios</span>
+          <a href="#home" class="top">Back to top ↑</a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/script.js" defer></script>
   </body>
 </html>
